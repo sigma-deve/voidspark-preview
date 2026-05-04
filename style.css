@@ -1,0 +1,122 @@
+/* --- Global Styles --- */
+body {
+    background-color: #000;
+    color: #0F0;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* --- Matrix Background Canvas --- */
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/* --- Header & Navigation --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(0, 40, 0, 0.9);
+    border-bottom: 2px solid #0F0;
+    box-shadow: 0 0 15px #0F0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #0F0;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: #0F0;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    background: #0F0;
+    color: #000;
+    padding: 5px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #00d4ff;
+    text-shadow: 0 0 20px #00d4ff;
+    margin-bottom: 10px;
+}
+
+.status-ok {
+    border: 1px solid #0F0;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 10px #0F0;
+}
+
+/* --- Buttons --- */
+.btn-group {
+    display: flex;
+    gap: 20px;
+}
+
+.cta-btn {
+    background: transparent;
+    border: 2px solid #0F0;
+    color: #0F0;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.cta-btn:hover {
+    background: #0F0;
+    color: #000;
+    box-shadow: 0 0 20px #0F0;
+}
+
+.secondary {
+    border-color: #00d4ff;
+    color: #00d4ff;
+}
+
+.secondary:hover {
+    background: #00d4ff;
+    color: #000;
+    box-shadow: 0 0 20px #00d4ff;
+}
+
+/* --- Simple Animations --- */
+.pulse {
+    animation: pulse-effect 2s infinite;
+}
+
+@keyframes pulse-effect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
