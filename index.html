@@ -2,77 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoidSpark | Next Gen Hosting</title>
+    <title>VOIDSPARK | v9.1 Terminal</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Ye line Google Fonts se Matrix jaisa font lane ke liye hai -->
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
+    <canvas id="matrix-canvas"></canvas>
 
-    <!-- Ye canvas Matrix rain effect dikhayega, script.js se control hoga -->
-    <canvas id="matrix"></canvas>
+    <header>
+        <div class="logo">VOIDSPARK</div>
+        <nav>
+            <span style="margin: 0 15px;">[ PLANS ]</span>
+            <span style="margin: 0 15px;">[ STATUS ]</span>
+            <span style="margin: 0 15px;">[ CONSOLE ]</span>
+        </nav>
+    </header>
 
-    <div class="main-container">
-        <header>
-            <div class="logo glitch" data-text="VOIDSPARK">VOIDSPARK</div>
-            <nav>
-                <a href="#plans">[ PLANS ]</a>
-                <a href="#status">[ STATUS ]</a>
-                <a href="#support">[ SUPPORT ]</a>
-                <a href="#" class="login-btn">CONSOLE LOGIN</a>
-            </nav>
-        </header>
+    <main class="hero">
+        <h1>System Initialized</h1>
+        <p style="color: #fff; opacity: 0.7;">High Performance Game Hosting. Low Latency. Zero Downtime.</p>
+        
+        <div class="status-box">
+            STATUS: [ <span style="color: #0F0;">ONLINE</span> ]
+        </div>
 
-        <main class="hero">
-            <h1 class="scanner-text">System Initialized: VoidSpark v9.1</h1>
-            <p class="fade-in">High Performance Game Hosting. Low Latency. Zero Downtime.</p>
-            <p class="status-ok">STATUS: [ ONLINE ]</p>
-            <div class="btn-group">
-                <button class="cta-btn pulse">DEPLOY SERVER</button>
-                <button class="cta-btn secondary">VIEW PLANS</button>
-            </div>
-        </main>
-    </div>
+        <div class="buttons">
+            <button class="cta-btn">Deploy Server</button>
+            <button class="cta-btn" style="border-color: var(--neon-blue); color: var(--neon-blue);">View Plans</button>
+        </div>
+    </main>
 
-    <!-- Ye script Matrix animation chalati hai -->
     <script>
-        const canvas = document.getElementById('matrix');
-        const context = canvas.getContext('2d');
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const nums = '0123456789';
-        const alphabet = katakana + latin + nums;
-
+        const alphabet = "ｦｱｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890";
         const fontSize = 16;
         const columns = canvas.width / fontSize;
-        const rainDrops = [];
-
-        for( let x = 0; x < columns; x++ ) {
-            rainDrops[x] = 1;
-        }
+        const rainDrops = Array.from({ length: columns }).fill(1);
 
         const draw = () => {
-            context.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            context.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            context.fillStyle = '#0F0';
-            context.font = fontSize + 'px monospace';
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
 
-            for(let i = 0; i < rainDrops.length; i++) {
+            for (let i = 0; i < rainDrops.length; i++) {
                 const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                context.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
 
-                if(rainDrops[i] * fontSize > canvas.width && Math.random() > 0.975){
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                     rainDrops[i] = 0;
                 }
                 rainDrops[i]++;
             }
         };
+
         setInterval(draw, 30);
     </script>
 </body>
